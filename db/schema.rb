@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160222210129) do
+ActiveRecord::Schema.define(version: 20160222234026) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -41,9 +41,11 @@ ActiveRecord::Schema.define(version: 20160222210129) do
     t.string   "status"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
+    t.integer  "item_id"
   end
 
   add_index "invoices", ["customer_id"], name: "index_invoices_on_customer_id", using: :btree
+  add_index "invoices", ["item_id"], name: "index_invoices_on_item_id", using: :btree
   add_index "invoices", ["merchant_id"], name: "index_invoices_on_merchant_id", using: :btree
 
   create_table "items", force: :cascade do |t|
@@ -67,8 +69,9 @@ ActiveRecord::Schema.define(version: 20160222210129) do
     t.integer  "invoice_id"
     t.string   "credit_card_number"
     t.string   "result"
-    t.datetime "created_at",         null: false
-    t.datetime "updated_at",         null: false
+    t.datetime "created_at",                  null: false
+    t.datetime "updated_at",                  null: false
+    t.string   "credit_card_expiration_date"
   end
 
   add_index "transactions", ["invoice_id"], name: "index_transactions_on_invoice_id", using: :btree
@@ -76,6 +79,7 @@ ActiveRecord::Schema.define(version: 20160222210129) do
   add_foreign_key "invoice_items", "invoices"
   add_foreign_key "invoice_items", "items"
   add_foreign_key "invoices", "customers"
+  add_foreign_key "invoices", "items"
   add_foreign_key "invoices", "merchants"
   add_foreign_key "items", "merchants"
   add_foreign_key "transactions", "invoices"
