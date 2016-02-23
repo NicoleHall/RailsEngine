@@ -30,13 +30,18 @@ Rails.application.routes.draw do
        resources :customers, only: [:index, :show]
 
        resources :merchants, only: [:index, :show] do
-         resources :items, only: [:index]
+         scope module: 'merchants' do
+           resources :items, only: [:index]
+           resources :invoices, only: [:index]
+         end
        end
 
        resources :items, only: [:index, :show]
        resources :invoices, only: [:index, :show]
        resources :transactions, only: [:index, :show]
        resources :invoice_items, only: [:index, :show]
+
+#/api/v1/merchants/:id/items
      end
    end
   # The priority is based upon order of creation: first created -> highest priority.
