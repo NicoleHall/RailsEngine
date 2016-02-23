@@ -2,91 +2,41 @@ Rails.application.routes.draw do
 
     namespace :api do
      namespace :v1 do
-      resources :customers, except: [:new, :edit ], defaults: { format: :json } do
-        collection do
-          get 'find'
-          get 'find_all'
-          get 'random'
-        end
+       get '/customers/find', to: "customers_finder#show", defaults: { format: :json }
+       get '/customers/find_all', to: "customers_finder#index", defaults: { format: :json }
+       get '/customers/random', to: "random_customer#show", defaults: { format: :json }
 
-        member do
-          get 'invoices'
-          get 'transactions'
-          get 'favorite_merchant'
-        end
-      end
-      resources :transactions, except: [:new, :edit], defaults: { format: :json } do
-        collection do
-          get 'find'
-          get 'find_all'
-          get 'random'
-        end
+       get '/merchants/find', to: "merchants_finder#show", defaults: { format: :json }
+       get '/merchants/find_all', to: "merchants_finder#index", defaults: { format: :json }
+       get '/merchants/random', to: "random_merchant#show", defaults: { format: :json }
 
-        member do
-          get 'invoice'
-        end
-      end
-      resources :merchants, except: [:new, :edit], defaults: { format: :json }  do
-        collection do
-          get 'find'
-          get 'find_all'
-          get 'random'
-        end
+       get '/invoices/find', to: "invoices_finder#show", defaults: { format: :json }
+       get '/invoices/find_all', to: "invoices_finder#index", defaults: { format: :json }
+       get '/invoices/random', to: "random_invoice#show", defaults: { format: :json }
 
-        member do
-          get 'items'
-          get 'invoices'
-          get 'revenue'
-        end
-      end
-      resources :items, except: [:new, :edit], defaults: { format: :json } do
-        collection do
-          get 'find'
-          get 'find_all'
-          get 'random'
-        end
+       get '/items/find', to: "items_finder#show", defaults: { format: :json }
+       get '/items/find_all', to: "items_finder#index", defaults: { format: :json }
+       get '/items/random', to: "random_item#show", defaults: { format: :json }
 
-        member do
-          get 'invoice_items'
-          get 'merchant'
-        end
-      end
-      resources :invoices, except: [:new, :edit], defaults: { format: :json } do
-        collection do
-          get 'find'
-          get 'find_all'
-          get 'random'
-        end
+       get '/invoice_items/find', to: "invoice_items_finder#show", defaults: { format: :json }
+       get '/invoice_items/find_all', to: "invoice_items_finder#index", defaults: { format: :json }
+       get '/invoice_items/random', to: "random_invoice_item#show", defaults: { format: :json }
 
-        member do
-          get 'transactions'
-          get 'invoice_items'
-          get 'items'
-          get 'customer'
-          get 'merchant'
-        end
-      end
-      resources :invoice_items, except: [:new, :edit], defaults: { format: :json } do
-        collection do
-          get 'find'
-          get 'find_all'
-          get 'random'
-        end
-
-        member do
-          get 'invoice'
-          get 'item'
-        end
-      end
-    end
-  end
-
-  # resources :merchants, except: [:new, :edit], defaults: { format: :json } do
-  #   resources :items
-  #   get "find", to: "merchant_finder#show"
-  # end
+       get '/transactions/find', to: "transactions_finder#show", defaults: { format: :json }
+       get '/transactions/find_all', to: "transactions_finder#index", defaults: { format: :json }
+       get '/transactions/random', to: "random_transaction#show", defaults: { format: :json }
 
 
+       resources :customers, only: [:index, :show], defaults: {format: :json}
+
+
+       resources :merchants, only: [:index, :show], defaults: {format: :json}
+       resources :items, only: [:index, :show], defaults: {format: :json}
+       resources :invoices, only: [:index, :show], defaults: {format: :json}
+       resources :transactions, only: [:index, :show], defaults: {format: :json}
+       resources :invoice_items, only: [:index, :show], defaults: {format: :json}
+     end
+   end
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
