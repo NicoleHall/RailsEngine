@@ -3,13 +3,12 @@ class Api::V1::MerchantsFinderController < Api::ApiController
  respond_to :json
 
   def index
-    find_all = Merchant.where(customer_params)
-    respond_with find_all
+   respond_with Merchant.where(merchant_params)
+
   end
 
   def show
-    find_one = Merchant.find_by(customer_params)
-    respond_with find_one
+    respond_with Merchant.find_by(merchant_params)
   end
 
 end

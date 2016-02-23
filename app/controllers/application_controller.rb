@@ -20,11 +20,11 @@ class ApplicationController < ActionController::Base
   end
 
   def merchant_params
-    params.permit(:name, :created_at, :updated_at)
+    params.permit(:id, :name, :created_at, :updated_at)
   end
 
   def transaction_params
-    params.permit(:invoice_id, :credit_card_number, :result, :created_at, :updated_at, :credit_card_expiration_date)
+    params.permit(:id, :invoice_id, :credit_card_number, :result, :created_at, :updated_at, :credit_card_expiration_date)
   end
 
 end
