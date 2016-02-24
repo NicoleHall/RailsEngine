@@ -42,6 +42,9 @@ Rails.application.routes.draw do
           resources :items, only: [:index]
           resources :invoices, only: [:index]
         end
+        member do
+          get 'favorite_customer'
+        end
       end
 
       resources :items, only: [:index, :show] do
