@@ -26,3 +26,12 @@ three:
   merchant_id: 11
   created_at: "2012-03-27 14:54:00"
   updated_at: "2012-03-27 14:54:00"
+
+four:
+  id: 2484
+  name: "Item Nihil Et"
+  description: "Bogus Item for fixtures"
+  unit_price: 1525
+  merchant_id: 102
+  created_at: "2012-03-27 14:54:00"
+  updated_at: "2012-03-27 14:54:00"
