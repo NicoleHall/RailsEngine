@@ -53,7 +53,11 @@ Rails.application.routes.draw do
         end
       end
 
-      resources :transactions, only: [:index, :show]
+      resources :transactions, only: [:index, :show] do
+        scope module: 'transactions' do
+          resource :invoice, only: [:show]
+        end
+      end
 
       resources :invoice_items, only: [:index, :show] do
         scope module: 'invoice_items' do
