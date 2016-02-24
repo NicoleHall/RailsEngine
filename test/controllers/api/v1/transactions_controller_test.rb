@@ -10,7 +10,6 @@ class Api::V1::TransactionsControllerTest < ActionController::TestCase
     assert_equal 4, transactions.count
   end
 
-
   test '#show' do
     get :show, format: :json, id: 281
     transaction = JSON.parse(response.body)
