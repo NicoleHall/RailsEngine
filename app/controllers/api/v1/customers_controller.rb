@@ -9,11 +9,9 @@ class Api::V1::CustomersController < Api::ApiController
   def show
     respond_with Customer.find_by(id: params[:id])
   end
- 
-  private
 
-  def customer_params
-    params.permit(:id, :first_name, :last_name, :created_at, :updated_at)
+  def favorite_merchant
+    respond_with Customer.find_by(id: params[:id]).favorite_merchant
   end
 
 end

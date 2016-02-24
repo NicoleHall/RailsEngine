@@ -32,6 +32,9 @@ Rails.application.routes.draw do
           resources :invoices, only: [:index]
           resources :transactions, only: [:index]
         end
+        member do
+          get 'favorite_merchant'
+        end
       end
 
       resources :merchants, only: [:index, :show] do
