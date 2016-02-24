@@ -49,7 +49,12 @@ Rails.application.routes.draw do
       end
 
       resources :transactions, only: [:index, :show]
-      resources :invoice_items, only: [:index, :show]
+
+      resources :invoice_items, only: [:index, :show] do
+        scope module: 'invoice_items' do
+          resource :invoice, only: [:show]
+        end
+      end
 
     end
   end

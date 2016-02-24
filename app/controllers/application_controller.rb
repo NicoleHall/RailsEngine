@@ -33,7 +33,7 @@ class ApplicationController < ActionController::Base
   def format_unit_price
     if params[:unit_price]
       params["unit_price"] = BigDecimal.new(params["unit_price"]) * 100
-      end
     end
+  end
 
 end

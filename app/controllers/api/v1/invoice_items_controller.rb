@@ -7,7 +7,7 @@ class Api::V1::InvoiceItemsController < Api::ApiController
   end
 
   def show
-    invoice_item = InvoiceItem.find(invoice_item_params)
+    respond_with InvoiceItem.find_by(invoice_item_params)
   end
 
 end
