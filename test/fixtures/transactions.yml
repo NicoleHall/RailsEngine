@@ -1,11 +1,33 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  invoice_id: 
-  credit_card_number: MyString
-  result: MyString
+  id: 279
+  invoice_id: 246
+  credit_card_number: "4233739940920683"
+  result: "success"
+  created_at: "2012-03-27 14:54:21"
+  updated_at: "2012-03-27 14:54:21"
 
 two:
-  invoice_id: 
-  credit_card_number: MyString
-  result: MyString
+  id: 280
+  invoice_id: 247
+  credit_card_number: "4003216997806204"
+  result: "success"
+  created_at: "2012-03-27 14:54:22"
+  updated_at: "2012-03-27 14:54:22"
+
+three:
+  id: 282
+  invoice_id: 248
+  credit_card_number: "4299282722966124"
+  result: "success"
+  created_at: "2012-03-27 14:54:22"
+  updated_at: "2012-03-27 14:54:22"
+
+four:
+  id: 281
+  invoice_id: 248
+  credit_card_number: "4127178844989526"
+  result: "failed"
+  created_at: "2012-03-27 14:54:22"
+  updated_at: "2012-03-27 14:54:22"
