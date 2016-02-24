@@ -44,6 +44,7 @@ Rails.application.routes.draw do
         end
         member do
           get 'favorite_customer'
+          get 'customers_with_pending_invoices'
         end
       end
 
