@@ -1,13 +1,35 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  item_id: 
-  invoice_id: 
-  quantity: 1
-  unit_price: 9.99
+  id: 13
+  item_id: 1921
+  invoice_id: 3
+  quantity: 4
+  unit_price: 78660
+  created_at: 2012-03-27 14:54:09
+  updated_at: 2012-03-27 14:54:09
 
 two:
-  item_id: 
-  invoice_id: 
-  quantity: 1
-  unit_price: 9.99
+  id: 20
+  item_id: 1918
+  invoice_id: 3
+  quantity: 9
+  unit_price: 72018
+  created_at: 2012-03-27 14:54:10
+  updated_at: 2012-03-27 14:54:10
+
+# three:
+#   item_id:
+#   invoice_id:
+#   quantity:
+#   unit_price:
+#   created_at:
+#   updated_at:
+#
+# four:
+#   item_id:
+#   invoice_id:
+#   quantity:
+#   unit_price:
+#   created_at:
+#   updated_at:
