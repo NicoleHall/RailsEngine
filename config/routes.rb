@@ -1,49 +1,55 @@
 Rails.application.routes.draw do
 
-    namespace :api, defaults: { format: :json } do
-     namespace :v1  do
-       get '/customers/find', to: "customers_finder#show"
-       get '/customers/find_all', to: "customers_finder#index"
-       get '/customers/random', to: "random_customer#show"
+  namespace :api, defaults: { format: :json } do
+    namespace :v1  do
+      get '/customers/find', to: "customers_finder#show"
+      get '/customers/find_all', to: "customers_finder#index"
+      get '/customers/random', to: "random_customer#show"
 
-       get '/merchants/find', to: "merchants_finder#show"
-       get '/merchants/find_all', to: "merchants_finder#index"
-       get '/merchants/random', to: "random_merchant#show"
+      get '/merchants/find', to: "merchants_finder#show"
+      get '/merchants/find_all', to: "merchants_finder#index"
+      get '/merchants/random', to: "random_merchant#show"
 
-       get '/invoices/find', to: "invoices_finder#show"
-       get '/invoices/find_all', to: "invoices_finder#index"
-       get '/invoices/random', to: "random_invoice#show"
+      get '/invoices/find', to: "invoices_finder#show"
+      get '/invoices/find_all', to: "invoices_finder#index"
+      get '/invoices/random', to: "random_invoice#show"
 
-       get '/items/find', to: "items_finder#show"
-       get '/items/find_all', to: "items_finder#index"
-       get '/items/random', to: "random_item#show"
+      get '/items/find', to: "items_finder#show"
+      get '/items/find_all', to: "items_finder#index"
+      get '/items/random', to: "random_item#show"
 
-       get '/invoice_items/find', to: "invoice_items_finder#show"
-       get '/invoice_items/find_all', to: "invoice_items_finder#index"
-       get '/invoice_items/random', to: "random_invoice_item#show"
+      get '/invoice_items/find', to: "invoice_items_finder#show"
+      get '/invoice_items/find_all', to: "invoice_items_finder#index"
+      get '/invoice_items/random', to: "random_invoice_item#show"
 
-       get '/transactions/find', to: "transactions_finder#show"
-       get '/transactions/find_all', to: "transactions_finder#index"
-       get '/transactions/random', to: "random_transaction#show"
+      get '/transactions/find', to: "transactions_finder#show"
+      get '/transactions/find_all', to: "transactions_finder#index"
+      get '/transactions/random', to: "random_transaction#show"
 
 
-       resources :customers, only: [:index, :show]
+      resources :customers, only: [:index, :show]
 
-       resources :merchants, only: [:index, :show] do
-         scope module: 'merchants' do
-           resources :items, only: [:index]
-           resources :invoices, only: [:index]
-         end
-       end
+      resources :merchants, only: [:index, :show] do
+        scope module: 'merchants' do
+          resources :items, only: [:index]
+          resources :invoices, only: [:index]
+        end
+      end
 
-       resources :items, only: [:index, :show]
-       resources :invoices, only: [:index, :show]
-       resources :transactions, only: [:index, :show]
-       resources :invoice_items, only: [:index, :show]
+      resources :items, only: [:index, :show]
 
-#/api/v1/merchants/:id/items
-     end
-   end
+      resources :invoices, only: [:index, :show] do
+        scope module: 'invoices' do
+          resources :transactions, only: [:index]
+          resource :merchant, only: [:show]
+        end
+      end
+
+      resources :transactions, only: [:index, :show]
+      resources :invoice_items, only: [:index, :show]
+
+    end
+  end
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
