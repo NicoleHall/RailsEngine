@@ -10,7 +10,7 @@ class Api::V1::ItemsControllerTest < ActionController::TestCase
 
     assert_response :success
     assert_equal 'Item Rerum Ex', first_item['name']
-    assert_equal 3, items.count
+    assert_equal 4, items.count
   end
 
 

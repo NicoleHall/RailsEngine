@@ -9,8 +9,8 @@ class Api::V1::CustomersControllerTest < ActionController::TestCase
     customers = JSON.parse(response.body)
     first_customer = customers.last
     assert_response :success
-    assert_equal 'Grayce', first_customer['first_name']
-    assert_equal 'Hettinger', first_customer['last_name']
+    assert_equal 'Nicole', first_customer['first_name']
+    assert_equal 'Murray', first_customer['last_name']
   end
 
 
