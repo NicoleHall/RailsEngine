@@ -12,4 +12,8 @@ class Merchant < ActiveRecord::Base
     cust_ids.map { |id| Customer.find(id) }
   end
 
+  def revenue_for_single_merchant
+    invoices.successful_transactions.joins(:invoice_items).sum("unit_price * quantity").to_f / 100
+  end
+
 end

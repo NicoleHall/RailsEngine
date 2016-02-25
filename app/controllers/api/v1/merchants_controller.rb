@@ -18,6 +18,11 @@ class Api::V1::MerchantsController < Api::ApiController
     respond_with Merchant.find_by(id: params[:id]).customers_with_pending_invoices
   end
 
+  def revenue
+    revenue = Merchant.find_by(id: params[:id]).revenue_for_single_merchant.to_s
+    respond_with({revenue: revenue})
+  end
+
 end
 
 #
