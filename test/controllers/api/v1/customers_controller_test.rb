@@ -23,7 +23,4 @@ class Api::V1::CustomersControllerTest < ActionController::TestCase
     assert_equal "Wisozk", customer["last_name"]
   end
 
-  test '#favorite_merchant' do
-    get :favorite_merchant, format: :json, id:
-  end
 end
