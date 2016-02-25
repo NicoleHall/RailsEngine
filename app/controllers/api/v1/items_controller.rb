@@ -13,6 +13,5 @@ class Api::V1::ItemsController < Api::ApiController
   def best_day
     item = Item.find_by(id: params[:id])
     respond_with item.best_day
-    require 'pry'; binding.pry
   end
 end

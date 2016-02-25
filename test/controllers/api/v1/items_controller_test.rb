@@ -23,4 +23,6 @@ class Api::V1::ItemsControllerTest < ActionController::TestCase
     assert_equal "324.27", item["unit_price"]
     assert_equal 11, item["merchant_id"]
   end
+
+ 
 end
