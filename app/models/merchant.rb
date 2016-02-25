@@ -13,8 +13,26 @@ class Merchant < ActiveRecord::Base
     cust_ids.map { |id| Customer.find(id) }
   end
 
-  def revenue_for_single_merchant
+  def revenue_for_single_merchant(params)
+
+    if params["date"]
+
+      invoices.successful_transactions
+      .where(created_at: params[:date])
+      .joins(:invoice_items)
+      .sum("unit_price * quantity").to_f / 100
+
+    else
     invoices.successful_transactions.joins(:invoice_items).sum("unit_price * quantity").to_f / 100
+   end
+  end
+
+  def self.revenue_for_all_merchants_by_date(date)
+    invoices = Merchant.all.flat_map { |merchant| merchant.invoices.where(created_at: date) }
+
+    invoice_items = invoices.flat_map {|i| i.invoice_items}
+
+    invoice_items.reduce(0) { |sum, invoice_item| sum + invoice_item.revenue}.to_s
   end
 
 end

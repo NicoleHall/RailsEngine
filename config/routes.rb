@@ -41,7 +41,12 @@ Rails.application.routes.draw do
         scope module: 'merchants' do
           resources :items, only: [:index]
           resources :invoices, only: [:index]
+          collection do
+           get '/revenue', to: "revenues#index"
+          end
+          #resources :revenues, only: [:index]
         end
+
         member do
           get 'favorite_customer'
           get 'customers_with_pending_invoices'
@@ -53,6 +58,9 @@ Rails.application.routes.draw do
         scope module: 'items' do
           resources :invoice_items, only: [:index]
           resource :merchant, only: [:show]
+        end
+        member do
+          get 'best_day'
         end
       end
 

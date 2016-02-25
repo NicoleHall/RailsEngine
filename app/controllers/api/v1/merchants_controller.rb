@@ -19,11 +19,14 @@ class Api::V1::MerchantsController < Api::ApiController
   end
 
   def revenue
-    revenue = Merchant.find_by(id: params[:id]).revenue_for_single_merchant.to_s
+    revenue = Merchant
+    .find_by(id: params[:id])
+    .revenue_for_single_merchant(merchant_params)
+    .to_s
+
     respond_with({revenue: revenue})
   end
 
-end
 
-#
-# GET /api/v1/merchants/:id/favorite_customer returns the customer who has conducted the most total number of successful transactions.
+
+end

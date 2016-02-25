@@ -23,7 +23,7 @@ class ApplicationController < ActionController::Base
   end
 
   def merchant_params
-    params.permit(:id, :name, :created_at, :updated_at)
+    params.permit(:id, :date, :name, :created_at, :updated_at)
   end
 
   def transaction_params
