@@ -43,6 +43,7 @@ Rails.application.routes.draw do
           resources :invoices, only: [:index]
           collection do
            get '/revenue', to: "revenues#index"
+           get '/most_revenue', to: "revenues#show"
           end
           #resources :revenues, only: [:index]
         end

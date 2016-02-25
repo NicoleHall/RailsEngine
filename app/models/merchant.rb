@@ -35,4 +35,14 @@ class Merchant < ActiveRecord::Base
     invoice_items.reduce(0) { |sum, invoice_item| sum + invoice_item.revenue}.to_s
   end
 
+  def self.revenue_for_all_merchants_by_quantity
+    Merchant.all.map do |the_one|
+      invoices_for_the_one = the_one.invoices
+      ii_for_the_one = invoices_for_the_one.flat_map {|invoice| invoice.invoice_items}
+      total_rev_for_the_one = ii_for_the_one.map { |ii| ii.revenue }.reduce(:+)
+      {id: the_one.id, name: the_one.name, value: total_rev_for_the_one}
+    end
+
+  end
+
 end
